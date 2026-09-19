@@ -1,1 +1,76 @@
 # DU-AN-UNG-DUNG-HINH-H-C-CUA-TICH-PHAN
+
+Dự án **Ứng dụng hình học của tích phân**, được biên soạn và trình bày chuyên nghiệp bằng LaTeX/Typst.  
+Mục tiêu của dự án là xây dựng một tài liệu có cấu trúc rõ ràng, trực quan, có các hình vẽ minh họa chi tiết và dễ dàng biên dịch thành tài liệu PDF chất lượng cao phục vụ cho học tập và giảng dạy.
+
+---
+
+## 📚 Nội dung chi tiết tài liệu
+
+Tài liệu bao gồm các chủ đề chính sau:
+
+### CHƯƠNG I: TÍCH PHÂN
+1. Khái niệm tích phân
+2. Các tính chất của tích phân
+3. Các công thức nguyên hàm, tích phân
+4. Các phương pháp tính tích phân
+
+### CHƯƠNG II: ỨNG DỤNG HÌNH HỌC CỦA TÍCH PHÂN
+#### 1. Ứng dụng tích phân để tính diện tích hình phẳng
+* Hình phẳng giới hạn bởi một đồ thị hàm số, trục hoành và hai đường thẳng $x = a, x = b$
+* Hình phẳng giới hạn bởi hai đồ thị hàm số và hai đường thẳng $x = a, x = b$
+
+#### 2. Ứng dụng tích phân để tính thể tích vật thể
+* Tính thể tích của vật thể
+* Tính thể tích khối tròn xoay
+
+#### 3. Ứng dụng tích phân để tính diện tích mặt tròn xoay
+* Công thức tổng quát và các ví dụ áp dụng
+
+#### 4. Ứng dụng tích phân để tính độ dài đường cong phẳng
+* Trường hợp đường cong $AB$ cho bởi phương trình $y = f(x)$
+* Trường hợp đường cong $AB$ cho bởi phương trình tham số
+* Trường hợp đường cong $AB$ cho bởi phương trình trong toạ độ cực
+
+#### 5. Một số bài tập ứng dụng hình học của tích phân
+* Bài tập cơ bản và nâng cao
+* Bài toán thực tế
+
+---
+## 🎯 Mục tiêu dự án
+
+* **Hệ thống hóa kiến thức:** Cung cấp định nghĩa, định lí và công thức về ứng dụng hình học của tích phân (diện tích hình phẳng, thể tích vật thể/khối tròn xoay, diện tích mặt tròn xoay và độ dài đường cong phẳng).
+* **Minh họa trực quan:** Tích hợp các hình vẽ, đồ thị chi tiết và chính xác bằng TikZ/pgfplots.
+* **Lời giải chi tiết:** Xây dựng hệ thống ví dụ và một số bài tập cơ bản, nâng cao, bài toán thực tế kèm lời giải.
+* **Chất lượng:** Biên soạn bằng LaTeX/Typst với bố cục khoa học, chuyên nghiệp, sẵn sàng biên dịch thành file PDF phục vụ học tập và giảng dạy.
+---
+
+## 🛠️ Công nghệ sử dụng
+* **LaTeX / Typst**: Định dạng văn bản toán học, công thức và vẽ hình minh họa bằng TikZ/pgfplots.
+* **GitHub**: Quản lý phiên bản mã nguồn tài liệu.
+
+---
+## 👥 Đối tượng độc giả
+
+* **Học sinh THPT:** Đặc biệt là học sinh lớp 12 đang ôn luyện cho các kỳ thi (kiểm tra định kỳ, tốt nghiệp THPT) cần hệ thống lý thuyết và bài tập ứng dụng tích phân.
+* **Sinh viên đại học:** Sinh viên các khối ngành Kỹ thuật, Công nghệ, Toán - Tin đang theo học các học phần Giải tích hoặc Toán cao cấp.
+* **Giáo viên và giảng viên Toán:** Giáo viên THPT và giảng viên đại học có thể sử dụng tài liệu làm nguồn tham khảo uy tín để biên soạn giáo án, bài giảng hoặc ngân hàng bài tập.
+* **Người tự học yêu toán học:** Những ai muốn tìm hiểu sâu hơn về bản chất, ý nghĩa hình học và các bài toán thực tiễn liên quan đến tích phân.
+---
+
+## 🔤 Quy ước kí hiệu
+
+* **$\int f(x) \, \mathrm{d}x$**: Nguyên hàm của hàm số $f(x)$.
+* **$\int_{a}^{b} f(x) \, \mathrm{d}x$**: Tích phân xác định của hàm số $f(x)$ trên đoạn $[a; b]$.
+* **$\mathrm{d}x, \mathrm{d}y, \mathrm{d}t, \mathrm{d}\varphi$**: Vi phân của các biến tương ứng ($x, y, t, \varphi$).
+* **$f'(x), y'(x)$**: Đạo hàm cấp một của hàm số theo biến $x$.
+* **$f''(x), y''(x)$**: Đạo hàm cấp hai của hàm số.
+* **$\frac{\mathrm{d}y}{\mathrm{d}x}$**: Đạo hàm của hàm ẩn hoặc hàm theo dạng tham số.
+* **$C^1[a; b]$**: Không gian các hàm số liên tục và có đạo hàm liên tục trên đoạn $[a; b]$.
+ ---
+ ## 📖 Tài liệu tham khảo
+
+1. **Sách giáo khoa Toán 12** (Bộ sách *Kết nối tri thức với cuộc sống* / *Chân trời sáng tạo*), Nhà xuất bản Giáo dục Việt Nam.
+2. **Bùi Xuân Diệu**, *Bài giảng Giải tích 1*.
+3. **Tài liệu lưu hành nội bộ & các nguồn toán học trực tuyến** (Hỗ trợ phương pháp biên soạn mã nguồn LaTeX và vẽ hình TikZ/pgfplots).
+4. **Có sự hỗ trợ của google Gemini trong quá trình làm dự án**.
