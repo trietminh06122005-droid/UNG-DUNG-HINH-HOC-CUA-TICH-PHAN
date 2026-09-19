@@ -1,0 +1,1093 @@
+\documentclass{article}
+\usepackage[vietnamese]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\documentclass[12pt,a4paper]{article}
+\usepackage[vietnamese]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\begin{document}
+
+\begin{titlepage}
+    % Vẽ khung viền đôi cho trang bìa
+    \begin{tikzpicture}[overlay, remember picture]
+        \draw[line width=1.5pt] ($(current page.north west)+(1.2cm,-1.2cm)$) rectangle ($(current page.south east)+(-1.2cm,1.2cm)$);
+        \draw[line width=0.5pt] ($(current page.north west)+(1.3cm,-1.3cm)$) rectangle ($(current page.south east)+(-1.3cm,1.3cm)$);
+    \end{tikzpicture}
+
+    \begin{center}
+        \vspace*{0.5cm}
+        {\large \textbf{TRƯỜNG ĐẠI HỌC SƯ PHẠM - ĐẠI HỌC HUẾ}} \\[0.3cm]
+        {\large \textbf{KHOA TOÁN HỌC}} \\[0.3cm]
+        ---------------------
+
+        \vspace{4cm}
+
+        {\Large \textbf{{HỌC PHẦN}:}
+        
+        \vspace*{0.5cm}
+        
+        {\Large \textbf{TÍCH HỢP CÔNG NGHỆ THÔNG TIN TRONG DẠY HỌC TOÁN}}
+
+        \vspace*{0.5cm}
+       
+       {\Large \textbf{DỰ ÁN: ỨNG DỤNG HÌNH HỌC CỦA TÍCH PHÂN}} \\[0.5cm]
+        \vspace{3.5cm}
+
+        % Bảng thông tin giảng viên và sinh viên
+        \begin{tabular}{lcL{7cm}}
+            \textbf{GIẢNG VIÊN} & : & \textbf{TS. NGUYỄN ĐĂNG MINH PHÚC} \\[0.3cm]
+            \textbf{SINH VIÊN} & : & \textbf{TRƯỢNG NGỤY MINH TRIẾT} \\[0.3cm]
+            \textbf{MÃ SINH VIÊN} & : & \textbf{23S1010046} \\[0.3cm]
+            \textbf{NĂM HỌC} & : & \textbf{2026-2027}
+        \end{tabular}
+
+        \vfill
+
+        {\large Thành phố Huế, tháng 09 năm 2026}
+    \end{center}
+\end{titlepage}
+
+\newpage
+\begin{center}
+    {\LARGE \textbf{PHẦN MỞ ĐẦU}}
+\end{center}
+
+\vspace{1cm}
+
+\hspace{1cm} Dự án "Ứng dụng hình học của tích phân" được xây dựng với mục tiêu hệ thống các kiến thức nền tảng, cung cấp các định nghĩa, tính chất, định lý cùng hệ thống công thức về ứng dụng hình học của tích phân, bao gồm diện tích hình phẳng, thể tích vật thể và khối tròn xoay, diện tích mặt tròn xoay cũng như độ dài đường cong phẳng. Bên cạnh đó, để nâng cao tính trực quan, tài liệu còn tích hợp các hình vẽ và đồ thị được thiết kế thông qua công cụ TikZ/pgfplots.
+
+\vspace{0.5cm} % Tạo khoảng cách giữa hai đoạn văn
+
+\hspace{1cm} Ngoài ra, dự án chú trọng xây dựng hệ thống ví dụ cùng các bài tập từ cơ bản đến nâng cao, kết hợp các bài toán thực tế kèm theo, phương pháp giải và lời giải chi tiết. Toàn bộ sản phẩm được biên soạn bằng LaTeX với bố cục khoa học và chuyên nghiệp, sẵn sàng biên dịch thành tệp PDF chất lượng cao nhằm phục vụ hiệu quả cho công tác học tập và giảng dạy.
+
+\vspace{0.5cm} % Tạo khoảng cách giữa hai đoạn văn
+
+\hspace{1cm}\vspace{0.3cm}
+\noindent Để thực hiện các mục tiêu đã đề ra, dự án được cấu trúc thành hai chương chính như sau:
+
+\begin{itemize}
+    \item \textbf{CHƯƠNG 1: TÍCH PHÂN.} Chương này tập trung hệ thống các kiến thức nền tảng, bao gồm các phần: Khái niệm tích phân; tính chất của tích phân; các công thức nguyên hàm, tích phân và các phương pháp tính tích phân.
+    \item \textbf{CHƯƠNG 2: ỨNG DỤNG HÌNH HỌC CỦA TÍCH PHÂN.} Chương này tập trung giới thiệu các ứng dụng hình học của tích phân kèm các ví dụ. Ngoài ra, chương này còn có các bài tập và ứng dụng hình học của tích phân. Chương này gồm các phần như: Ứng dụng tích phân để tính diện tích hình phẳng; ứng dụng tích phân để tính thể tích vật thể; ứng dụng tích phân để tính diện tích mặt tròn xoay; ứng dụng tích phân tính độ dài đường cong phẳng và một số bài tập áp dụng.
+\end{itemize}
+
+\newpage
+\begin{center}
+\section*{CHƯƠNG I: TÍCH PHÂN}
+\end{center}
+
+\bigskip
+
+
+\subsection*{1. Khái niệm tích phân}
+
+\hspace{1cm}Cho $f(x)$ là hàm số liên tục trên đoạn $[a, b]$. Nếu $F(x)$ là một nguyên hàm của $f(x)$ thì hiệu số $F(b) - F(a)$ được gọi là tích phân từ $a$ đến $b$ của hàm số $f(x)$, kí hiệu là:
+\[\int_{a}^{b} f(x) \, dx\].
+
+\paragraph{Chú ý.}
+\begin{enumerate}
+    \item[a)] Hiệu $F(b) - F(a)$ thường được kí hiệu là $\left. F(x) \right|_a^b$.
+    Như vậy
+    \[\int_a^b f(x)\mathrm{d}x = \left. F(x) \right|_a^b.\]
+
+    \item[b)] Ta gọi $\displaystyle\int_a^b$ là dấu tích phân, $a$ là cận dưới, $b$ là cận trên, $f(x)\mathrm{d}x$ là \textit{biểu thức dưới dấu tích phân} và $f(x)$ là hàm số dưới dấu tích phân.
+
+    \item[c)] Trong trường hợp $a = b$ hoặc $a > b$, ta quy ước:
+    \[\int_a^a f(x)\mathrm{d}x = 0; \quad \int_a^b f(x)\mathrm{d}x = -\int_b^a f(x)\mathrm{d}x.\]
+\end{enumerate}
+
+\bigskip
+
+\subsection*{2. Tính chất của tích phân}
+\hspace{1cm}Cho $f(x)$, $g(x)$ là hàm số liên tục trên đoạn $[a, b]$. Giả sử $F(x)$ là một nguyên hàm của $f(x)$ và $G(x)$ là một nguyên hàm của $g(x)$ trên đoạn $[a, b]$, ta có:
+\begin{enumerate}
+    \item $\int_{a}^{a} f(x) \, dx = 0$
+    \item $\int_{a}^{b} f(x) \, dx = -\int_{b}^{a} f(x) \, dx$
+    \item $\int_{a}^{b} k \cdot f(x) \, dx = k \cdot \int_{a}^{b} f(x) \, dx \quad (k \text{ là hằng số})$
+    \item $\int_{a}^{b} [f(x) \pm g(x)] \, dx = \int_{a}^{b} f(x) \, dx \pm \int_{a}^{b} g(x) \, dx$
+    \item $\int_{a}^{c} f(x) \, dx = \int_{a}^{b} f(x) \, dx + \int_{b}^{c} f(x) \, dx \quad (\forall b \in [a, c])$
+    \item Nếu $f(x) \ge 0, \forall x \in [a, b]$ thì $\int_{a}^{b} f(x) \, dx \ge 0$.
+\end{enumerate}
+
+\bigskip
+
+\subsection*{3. Các công thức nguyên hàm, tích phân}
+
+\paragraph{a.  Nguyên hàm của một số hàm thường gặp:}
+\[
+\begin{align*}
+&\int 0\,\mathrm{d}x = C; && \int 1\,\mathrm{d}x = x + C \\
+&\int x^\alpha\,\mathrm{d}x = \frac{x^{\alpha+1}}{\alpha+1} + C \quad (\alpha \neq -1); && \int \frac{1}{x}\,\mathrm{d}x = \ln|x| + C \\
+&\int e^x\,\mathrm{d}x = e^x + C; && \int a^x\,\mathrm{d}x = \frac{a^x}{\ln a} + C \quad (0 < a \neq 1) \\
+&\int \cos x\,\mathrm{d}x = \sin x + C; && \int \sin x\,\mathrm{d}x = -\cos x + C \\
+&\int \frac{1}{\cos^2 x}\,\mathrm{d}x = \tan x + C; && \int \frac{1}{\sin^2 x}\,\mathrm{d}x = -\cot x + C
+\end{align*}
+\paragraph{b. Các ông thức nguyên hàm nâng cao:}
+\[
+\begin{align*}
+    &\int \sqrt{a^2 - x^2} \, \mathrm{d}x = \frac{x\sqrt{a^2 - x^2}}{2} + \frac{a^2}{2}\arcsin\frac{x}{a} + C \\
+    &\int \frac{\mathrm{d}x}{\sin(ax + b)} = \frac{1}{a}\ln\left|\tan\frac{ax + b}{2}\right| + C \\
+    &\int e^{ax}\cos bx \, \mathrm{d}x = \frac{e^{ax}(a\cos bx + b\sin bx)}{a^2 + b^2} + C \\
+    &\int e^{ax}\sin bx \, \mathrm{d}x = \frac{e^{ax}(a\sin bx - b\cos bx)}{a^2 + b^2} + C \\
+    &\int \frac{\mathrm{d}x}{a^2 + x^2} = \frac{1}{a}\arctan\frac{x}{a} + C \\
+    &\int \frac{\mathrm{d}x}{a^2 - x^2} = \frac{1}{2a}\ln\left|\frac{a + x}{a - x}\right| + C \\
+    &\int \frac{\mathrm{d}x}{\sqrt{x^2 + a^2}} = \ln\left(x + \sqrt{x^2 + a^2}\right) + C \\
+    &\int \frac{\mathrm{d}x}{\sqrt{a^2 - x^2}} = \arcsin\frac{x}{|a|} + C \\
+    &\int \frac{\mathrm{d}x}{x\sqrt{x^2 - a^2}} = \frac{1}{a}\arccos\left|\frac{a}{x}\right| + C \\
+    &\int \frac{\mathrm{d}x}{x\sqrt{x^2 + a^2}} = -\frac{1}{a}\ln\left|\frac{a + \sqrt{x^2 + a^2}}{x}\right| + C \\
+    &\int \ln(ax + b) \, \mathrm{d}x = \left(x + \frac{b}{a}\right)\ln(ax + b) - x + C
+\end{align*}
+
+\bigskip
+
+\subsection*{4. Các phương pháp tính tích phân}
+
+\bigskip
+
+\begin{itemize}
+    \item \textbf{Tính tích phân bằng định nghĩa, tính chất và bảng nguyên hàm cơ bản}: Sử dụng trực tiếp bảng nguyên hàm các hàm số cơ bản, các tính chất tuyến tính của tích phân và định nghĩa tích phân để tính toán.
+   
+   \bigskip
+
+    \item \textbf{Phương pháp đổi biến số}:
+\begin{itemize}
+    \item \textbf{Bài toán}: Tính $I = \displaystyle\int_{a}^{b} f(x)\,\mathrm{d}x$.
+    
+    \item \textbf{Phương pháp đổi biến dạng I}:
+    \begin{itemize}
+        \item \textit{Định lí}: Nếu hàm số $x = u(t)$ có đạo hàm liên tục trên đoạn $[\alpha; \beta]$, hàm hợp $f(u(t))$ được xác định trên $[\alpha; \beta]$, và $u(\alpha) = a$, $u(\beta) = b$, thì:
+        $$I = \int_{a}^{b} f(x)\,\mathrm{d}x = \int_{\alpha}^{\beta} f(u(t))u'(t)\,\mathrm{d}t$$
+    \end{itemize}
+    
+    \noindent \textbf{Ví dụ:} Tính tích phân $I = \displaystyle\int_{0}^{\frac{\pi}{2}} (\cos^3 x - 1)\cos^2 x \, \mathrm{d}x$ .    
+    
+    \noindent \textit{Giải}: Ta tách tích phân thành:
+    $$I = \int_{0}^{\frac{\pi}{2}} \cos^5 x \, \mathrm{d}x - \int_{0}^{\frac{\pi}{2}} \cos^2 x \, \mathrm{d}x$$
+    Xét $I_2 = \displaystyle\int_{0}^{\frac{\pi}{2}} \cos^2 x \, \mathrm{d}x = \frac{1}{2}\int_{0}^{\frac{\pi}{2}} (1 + \cos 2x)\,\mathrm{d}x = \left. \frac{1}{2}\left(x + \frac{1}{2}\sin 2x\right) \right|_0^{\frac{\pi}{2}} = \frac{\pi}{4}$.
+    
+    Mặt khác xét $I_1 = \displaystyle\int_{0}^{\frac{\pi}{2}} \cos^5 x \, \mathrm{d}x = \int_{0}^{\frac{\pi}{2}} \cos^4 x \cos x \, \mathrm{d}x = \int_{0}^{\frac{\pi}{2}} (1 - \sin^2 x)^2 \,\mathrm{d}(\sin x) = \frac{8}{15}$.
+    
+    \noindent \textbf{Vậy} $I = I_1 - I_2 = \frac{8}{15} - \frac{\pi}{4}$.
+
+\bigskip
+
+    \item \textit{Chú ý về khử căn thức}: Trong thực tế, nếu hàm số dưới dấu tích phân có chứa các căn dạng $\sqrt{a^2-x^2}$, $\sqrt{a^2+x^2}$ và $\sqrt{x^2-a^2}$ ($a$ là hằng số dương) mà không có cách biến đổi nào khác, ta đổi sang hàm lượng giác để khử căn:
+    
+    \begin{itemize}
+        \item Với $\sqrt{a^2 - x^2}$, đặt $x = a\sin t$ ($t \in \left[-\frac{\pi}{2}; \frac{\pi}{2}\right]$) hoặc $x = a\cos t$ ($t \in [0; \pi]$).
+        \item Với $\sqrt{a^2 + x^2}$, đặt $x = a\tan t$ ($t \in \left(-\frac{\pi}{2}; \frac{\pi}{2}\right)$) hoặc $x = a\cot t$ ($t \in (0; \pi)$).
+        \item Với $\sqrt{x^2 - a^2}$, đặt $x = \frac{a}{\sin t}$ ($t \in \left[-\frac{\pi}{2}; \frac{\pi}{2}\right] \setminus \{0\}$) hoặc $x = \frac{a}{\cos t}$ ($t \in [0; \pi] \setminus \left\{\frac{\pi}{2}\right\}$).
+    \end{itemize}
+
+\bigskip
+
+    \item \textbf{Phương pháp đổi biến dạng II}:
+    \begin{itemize}
+        \item \textit{Định lí}: Nếu hàm số $u = u(x)$ đơn điệu và có đạo hàm liên tục trên đoạn $[a; b]$ sao cho $f(x)\,\mathrm{d}x = g(u(x))u'(x)\,\mathrm{d}x = g(u)\,\mathrm{d}u$, thì:
+        $$I = \int_{a}^{b} f(x)\,\mathrm{d}x = \int_{u(a)}^{u(b)} g(u)\,\mathrm{d}u$$
+    \end{itemize}
+    
+    \noindent \textbf{Ví dụ:} Tính $I = \displaystyle\int_{0}^{1} x^2\sqrt{x^3 + 5}\,\mathrm{d}x$
+    
+    \noindent \textit{Giải}: Đặt $u(x) = x^3 + 5$. Ta có $u(0) = 5$, $u(1) = 6$.
+    Từ đó suy ra: 
+    $$I = \frac{1}{3}\int_{5}^{6} \sqrt{u}\,\mathrm{d}u = \left. \frac{2}{9}u\sqrt{u} \right|_5^6 = \frac{2}{9}(6\sqrt{6} - 5\sqrt{5}) = \frac{4}{9}\sqrt{6} - \frac{10}{9}\sqrt{5}$$.
+\end{itemize}
+
+\bigskip
+
+\item \textbf{Phương pháp tích phân từng phần}: 
+Nếu $u(x)$ và $v(x)$ là các hàm số có đạo hàm liên tục trên $[a; b]$ thì công thức tích phân từng phần được phát biểu là:
+$$\int_{a}^{b} u(x)v'(x)\,\mathrm{d}x = \Big(u(x)v(x)\Big)\Big|_a^b - \int_{a}^{b} v(x)u'(x)\,\mathrm{d}x$$
+hay viết gọn là:
+$$\int_{a}^{b} u\,\mathrm{d}v = uv\Big|_a^b - \int_{a}^{b} v\,\mathrm{d}u$$
+
+Các bước thực hiện cơ bản bao gồm:
+\begin{itemize}
+    \item \textbf{Bước 1:} Viết biểu thức dưới dấu tích phân $f(x)\,\mathrm{d}x$ dưới dạng $u\,\mathrm{d}v$ bằng cách chọn một phần thích hợp làm $u(x)$ và phần còn lại là $\mathrm{d}v = v'(x)\,\mathrm{d}x$.
+    \item \textbf{Bước 2:} Tính đạo hàm để tìm $\mathrm{d}u = u'(x)\,\mathrm{d}x$ và lấy nguyên hàm để tìm $v = \int \mathrm{d}v$.
+    \item \textbf{Bước 3:} Áp dụng công thức tích phân từng phần để hoàn thành việc tính toán.
+\end{itemize}
+Trong quá trình vận dụng, tùy theo dạng toán (như đa thức nhân hàm mũ, hàm lượng giác, hoặc hàm lô-garit) mà ta ưu tiên chọn $u$ theo các quy tắc "nhất log, nhì đa, tam lượng, tứ mũ".
+
+\noindent \textbf{Ví dụ:} Tính tích phân $I = \displaystyle\int_{1}^{3} \frac{3 + \ln x}{(x+1)^2}\,\mathrm{d}x $
+
+\noindent \textbf{Giải:}
+$$I = \int_{1}^{3} \frac{3 + \ln x}{(x+1)^2}\,\mathrm{d}x = 3\int_{1}^{3} \frac{\mathrm{d}x}{(x+1)^2} + \int_{1}^{3} \frac{\ln x}{(x+1)^2}\,\mathrm{d}x$$
+
+\noindent Đặt $I_1 = 3\displaystyle\int_{1}^{3} \frac{\mathrm{d}x}{(x+1)^2} = \left. \frac{-3}{x+1} \right|_1^3 = \frac{3}{4}$
+
+\noindent Đặt $I_2 = \displaystyle\int_{1}^{3} \frac{\ln x}{(x+1)^2}\,\mathrm{d}x$
+
+\noindent Đặt $\begin{cases} u = \ln x \\ \mathrm{d}v = \dfrac{\mathrm{d}x}{(x+1)^2} \end{cases} \implies \begin{cases} \mathrm{d}u = \dfrac{\mathrm{d}x}{x} \\ v = -\dfrac{1}{x+1} \end{cases}$
+
+\begin{align*}
+    I_2 &= \left. -\frac{\ln x}{x+1} \right|_1^3 + \int_{1}^{3} \frac{\mathrm{d}x}{x(x+1)} \\
+    &= -\frac{\ln 3}{4} + \int_{1}^{3} \frac{\mathrm{d}x}{x} - \int_{1}^{3} \frac{\mathrm{d}x}{x+1} \\
+    &= -\frac{\ln 3}{4} + \ln\frac{3}{2}
+\end{align*}
+
+\noindent \textbf{Vậy:} $I = I_1 + I_2 = \frac{3}{4} + \left(-\frac{\ln 3}{4} + \ln\frac{3}{2}\right) = \frac{3}{4}(1 + \ln 3) - \ln 2$
+
+\bigskip
+
+    \item \textbf{Tích phân hàm số phân thức hữu tỉ $\int \frac{P(x)}{Q(x)}\mathrm{d}x$}: 
+    Nếu bậc của $P(x) \ge$ bậc của $Q(x)$ thì thực hiện phép chia đa thức. 
+    Nếu bậc của $P(x) <$ bậc của $Q(x)$, phân tích thành các phân thức đơn giản tùy theo nghiệm của mẫu số $Q(x)$ như nghiệm đơn, nhân tử bậc hai vô nghiệm, nghiệm bội, hoặc sử dụng phương pháp đồng nhất hệ số đối với tam thức bậc hai ở mẫu.
+
+\bigskip
+
+    \item \textbf{Tích phân các hàm lượng giác}: 
+    Sử dụng các công thức biến đổi cơ bản (tích thành tổng, hạ bậc) hoặc các phép đặt ẩn phụ chuyên dụng như đặt $t = \tan\frac{x}{2}$ cho dạng tổng quát $\int \frac{\mathrm{d}x}{a\sin x + b\cos x + c}$; chia tử và mẫu cho $\cos^2 x$ hoặc đặt $t = \tan x$ đối với dạng chứa $\sin^2 x, \cos^2 x, \sin x\cos x$ ở mẫu; hoặc dùng hệ số bất định cho dạng phân thức chứa bậc nhất của sin và cos. 
+    Ngoài ra có thể áp dụng tính chẵn lẻ của hàm số đối với $\sin x$ và $\cos x$ để chọn phép đặt $t = \tan x$ ($\cot x$), $t = \cos x$, hoặc $t = \sin x$.
+
+\bigskip
+
+    \item \textbf{Tích phân hàm vô tỉ}: 
+    Khử căn thức bằng cách nhân lượng liên hợp, biến đổi thành bình phương đúng, hoặc đặt toàn bộ căn thức (hoặc phần phức tạp) làm ẩn phụ $t$ để làm mất hẳn căn.
+
+\bigskip
+
+    \item \textbf{Tích phân chứa dấu giá trị tuyệt đối}: 
+    Lập bảng xét dấu của biểu thức trong dấu giá trị tuyệt đối trên miền lấy tích phân, sau đó chia miền tích phân thành các khoảng nhỏ để phá dấu giá trị tuyệt đối và tính từng phần.
+
+\bigskip
+
+    \item \textbf{Tích phân một số hàm đặc biệt}:
+    \begin{itemize}
+        \item Hàm số liên tục và lẻ trên đoạn $[-a; a]$ có tích phân xác định bằng $0$: $\int_{-a}^{a} f(x)\,\mathrm{d}x = 0$.
+        \item Hàm số liên tục và chẵn trên đoạn $[-a; a]$ có thể rút gọn bằng hai lần tích phân trên nửa đoạn dương: $\int_{-a}^{a} f(x)\,\mathrm{d}x = 2\int_{0}^{a} f(x)\,\mathrm{d}x$.
+        \item Dạng tích phân có mẫu chứa hàm mũ $\int_{-\alpha}^{\alpha} \frac{f(x)}{a^x+1}\,\mathrm{d}x = \frac{1}{2}\int_{-\alpha}^{\alpha} f(x)\,\mathrm{d}x$.
+        \item Tính chất đối xứng của hàm lượng giác trên $[0; \frac{\pi}{2}]$: $\int_{0}^{\frac{\pi}{2}} f(\sin x)\,\mathrm{d}x = \int_{0}^{\frac{\pi}{2}} f(\cos x)\,\mathrm{d}x$.
+    \end{itemize}
+\end{itemize}
+
+\newpage
+\begin{center}
+\section*{CHƯƠNG 2. ỨNG DỤNG TÍCH PHÂN ĐỂ TÍNH DIỆN TÍCH HÌNH PHẲNG}
+\end{center}
+
+\bigskip
+
+\paragraph{Ý nghĩa hình học của tích phân:}
+\noindent Nếu hàm số $f(x)$ liên tục và không âm trên đoạn $[a; b]$, thì tích phân $\displaystyle\int_{a}^{b} f(x)\,\mathrm{d}x$ là diện tích $S$ của hình thang cong giới hạn bởi đồ thị $y = f(x)$, trục hoành và hai đường thẳng $x = a$, $x = b$. Vậy:
+$$S = \int_{a}^{b} f(x)\,\mathrm{d}x$$
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        xmin=-0.5, xmax=6,
+        ymin=-0.5, ymax=5,
+        axis lines=middle,
+        xlabel={$x$},
+        ylabel={$y$},
+        xtick={1, 4.5},
+        xticklabels={$a$, $b$},
+        ytick=\empty,
+        samples=100,
+        width=9cm, height=6.5cm,
+        xlabel style={at={(current axis.right of origin)},anchor=north west},
+        ylabel style={at={(current axis.above origin)},anchor=south east},
+    ]
+        % --- TÔ MÀU HỒNG MIỀN DIỆN TÍCH S ---
+        \addplot[fill=pink!40, draw=none, domain=1:4.5] {2 + 0.2*x + 0.1*sin(deg(x*2))} \closedcycle;
+
+        % --- VẼ ĐỒ THỊ HÀM SỐ y = f(x) ---
+        \addplot[thick, red, domain=0.5:5] {2 + 0.2*x + 0.1*sin(deg(x*2))};
+
+        % --- VẼ CÁC ĐƯỜNG THẲNG ĐỨNG TẠI x = a VÀ x = b ---
+        \draw[thick] (axis cs:1,0) -- (axis cs:1,{2 + 0.2*1 + 0.1*sin(deg(1*2))});
+        \draw[thick] (axis cs:4.5,0) -- (axis cs:4.5,{2 + 0.2*4.5 + 0.1*sin(deg(4.5*2))});
+
+        % --- GẮN NHÃN CHỮ S Ở GIỮA MIỀN ---
+        \node at (axis cs:2.75, 1.5) [above] {$S$};
+
+        % --- GẮN NHÃN HÀM SỐ VÀ GỐC TỌA ĐỘ ---
+        \node at (axis cs:2.5, 3.2) [above] {$y = f(x)$};
+        \node at (axis cs:0,0) [below left] {$O$};
+
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+
+\bigskip
+
+\section*{1. Ứng dụng tích phân để tính diện tích hình phẳng}
+\subsection*{a. Hình phẳng giới hạn bởi một đồ thị hàm số, trục hoành và hai đường thẳng $x = a, x = b$}
+
+\paragraph{Khái niệm.} 
+Diện tích $S$ của hình phẳng giới hạn bởi đồ thị của hàm số $f(x)$ liên tục, trục hoành và hai đường thẳng $x = a, x = b$ ($a < b$), được tính bằng công thức:
+\[S = \int_{a}^{b} |f(x)| \, \mathrm{d}x\]
+
+\paragraph{Ví dụ 1.} Tính diện tích hình phẳng giới hạn bởi đồ thị của hàm số $y = x^3$, trục hoành và hai đường thẳng $x = 0, x = 2$.
+
+\noindent\textbf{Giải:}  
+Diện tích hình phẳng cần tính là:
+\[S = \int_{0}^{2} |x^3| \, \mathrm{d}x = \int_{0}^{2} x^3 \, \mathrm{d}x = \left. \frac{x^4}{4} \right|_{0}^{2} = \frac{2^4}{4} - 0 = 4 - 0 = 4.\]
+
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        xmin=-7, xmax=5,
+        ymin=-3, ymax=10,
+        axis lines=middle,
+        xlabel={$x$},
+        ylabel={$y$},
+        xtick={-6,-4,-2,2,4},
+        ytick={-2,2,4,6,8},
+        samples=100,
+        width=8cm, height=8cm,
+        xlabel style={at={(current axis.right of origin)},anchor=north west},
+        ylabel style={at={(current axis.above origin)},anchor=south east},]
+        % Tô màu hồng miền giới hạn dưới đồ thị y = x^3 từ x = 0 đến x = 2
+        \addplot[fill=pink!50, draw=none, domain=0:2] {x^3} \closedcycle;
+
+        % Vẽ đường cong y = x^3
+        \addplot[thick, red, domain=0:2] {x^3};
+
+        % Vẽ đoạn thẳng đứng từ A(2,8) xuống trục x tại x = 2
+        \draw[thick, red] (axis cs:2,0) -- (axis cs:2,8);
+
+        % Vẽ đường đứt nét từ A(2,8) sang trục y tại y = 8
+        \draw[dashed] (axis cs:0,8) -- (axis cs:2,8);
+
+        % Gắn nhãn gốc tọa độ O và điểm A
+        \node at (axis cs:0,0) [below right] {$O$};
+        \node at (axis cs:2,8) [above left] {$A$};
+
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+
+\paragraph{Ví dụ 2.} Tính diện tích hình phẳng giới hạn bởi đồ thị hàm số $y = \sin x$, trục hoành và hai đường thẳng $x = 0, x = 2\pi$.
+
+\noindent\textbf{Giải:}  
+Diện tích hình phẳng cần tính là:
+\[S = \int_{0}^{2\pi} |\sin x| \, \mathrm{d}x = \int_{0}^{\pi} |\sin x| \, \mathrm{d}x + \int_{\pi}^{2\pi} |\sin x| \, \mathrm{d}x\]
+\[= \int_{0}^{\pi} \sin x \, \mathrm{d}x + \int_{\pi}^{2\pi} (-\sin x) \, \mathrm{d}x\]
+\[= \left. -\cos x \right|_{0}^{\pi} + \left. \cos x \right|_{\pi}^{2\pi} = (-\cos \pi + \cos 0) + (\cos 2\pi - \cos \pi) = (1 + 1) + (1 - (-1)) = 4.\]
+
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        xmin=-0.5, xmax=7,
+        ymin=-1.3, ymax=1.3,
+        axis lines=middle,
+        xlabel=$x$, ylabel=$y$,
+        xtick={0, 3.1416, 6.2831},
+        xticklabels={$0$, $\pi$, $2\pi$},
+        ytick={-1,1},
+        samples=200,
+        width=10cm, height=5cm,
+    ]
+        \addplot[name path=f, blue, domain=0:6.2831] {sin(deg(x))};
+        \addplot[name path=axis, draw=none, domain=0:6.2831] {0};
+        \addplot[pink!50] fill between[of=f and axis, domain=0:3.1416];
+        \addplot[pink!50] fill between[of=f and axis, domain=3.1416:6.2831];
+        \draw[dashed] (axis cs:3.1416,0) -- (axis cs:3.1416,1);
+        \draw[dashed] (axis cs:6.2831,0) -- (axis cs:6.2831,-1);
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+
+\subsection*{b. Hình phẳng giới hạn bởi hai đồ thị hàm số và hai đường thẳng $x = a, x = b$}
+
+\paragraph{Khái niệm.} 
+Diện tích $S$ của hình phẳng giới hạn bởi đồ thị của hai hàm số $f(x), g(x)$ liên tục trên đoạn $[a; b]$ và hai đường thẳng $x = a, x = b$, được tính bằng công thức:
+\[S = \int_{a}^{b} |f(x) - g(x)| \, \mathrm{d}x\]
+
+\paragraph{Chú ý.} Nếu hiệu $f(x) - g(x)$ không đổi dấu trên đoạn $[a; b]$ thì:
+\[\int_{a}^{b} |f(x) - g(x)| \, \mathrm{d}x = \left| \int_{a}^{b} (f(x) - g(x)) \, \mathrm{d}x \right|\]
+
+\paragraph{Ví dụ 1.} Tính diện tích hình phẳng giới hạn bởi hai parabol $y = 4 - x^2$, $y = x^2$ và hai đường thẳng $x = -1, x = 1$.
+
+\noindent\textbf{Giải:}  
+Diện tích hình phẳng cần tính là:
+\[S = \int_{-1}^{1} |(4 - x^2) - x^2| \, \mathrm{d}x = \int_{-1}^{1} |4 - 2x^2| \, \mathrm{d}x\]
+\[= \int_{-1}^{1} (4 - 2x^2) \, \mathrm{d}x = \left. \left( 4x - \frac{2}{3}x^3 \right) \right|_{-1}^{1} = \left( 4 - \frac{2}{3} \right) - \left( -4 + \frac{2}{3} \right) = \frac{10}{3} - \left( -\frac{10}{3} \right) = \frac{20}{3}.\]
+
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        xmin=-2.5, xmax=2.5,
+        ymin=-1.5, ymax=5.5,
+        axis lines=middle,
+        xlabel=$x$, ylabel=$y$,
+        xtick={-1,1},
+        ytick={1,2,3,4},
+        samples=100,
+        width=8cm, height=7.5cm,
+    ]
+        \addplot[name path=f, magenta, domain=-2.3:2.3] {4 - x^2};
+        \addplot[name path=g, blue, domain=-1.9:1.9] {x^2};
+        \addplot[orange!60] fill between[of=f and g, domain=-1:1];
+        \draw[dashed, thick] (axis cs:-1,0) -- (axis cs:-1,3);
+        \draw[dashed, thick] (axis cs:1,0) -- (axis cs:1,3);
+        \node[magenta, font=\small] at (axis cs:-1.5, 3.8) {$y = 4 - x^2$};
+        \node[blue, font=\small] at (axis cs:1.3, 3.3) {$y = x^2$};
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+
+\paragraph{Ví dụ 2.} Tính diện tích hình phẳng giới hạn bởi đồ thị hai hàm số $y = \sin x$, $y = \cos x$ và hai đường thẳng $x = 0, x = \frac{\pi}{4}$.
+
+\noindent\textbf{Giải:}  
+Diện tích hình phẳng cần tính là:
+\[S = \int_{0}^{\frac{\pi}{4}} |\sin x - \cos x| \, \mathrm{d}x = \int_{0}^{\frac{\pi}{4}} (\cos x - \sin x) \, \mathrm{d}x\]
+\[= \left. (\sin x + \cos x) \right|_{0}^{\frac{\pi}{4}} = \left( \frac{\sqrt{2}}{2} + \frac{\sqrt{2}}{2} \right) - (0 + 1) = \sqrt{2} - 1.\]
+
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        xmin=-0.2, xmax=1.6,
+        ymin=-0.2, ymax=1.3,
+        axis lines=middle,
+        xlabel=$x$, ylabel=$y$,
+        xtick={0.7854},
+        xticklabels={$\frac{\pi}{4}$},
+        ytick={0.707},
+        yticklabels={$\frac{\sqrt{2}}{2}$},
+        samples=200,
+        width=9cm, height=6cm,
+    ]
+        \addplot[name path=f, blue, domain=0:1.3] {sin(deg(x))};
+        \addplot[name path=g, red, domain=0:1.3] {cos(deg(x))};
+        \addplot[orange!60] fill between[of=g and f, domain=0:0.7854];
+        \draw[dashed, thick] (axis cs:0.7854,0) -- (axis cs:0.7854,0.707);
+        \node[blue, font=\small] at (axis cs:1.2, 1.05) {$y = \sin x$};
+        \node[red, font=\small] at (axis cs:1.2, 0.22) {$y = \cos x$};
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+
+\bigskip
+
+\section*{2. Ứng dụng tích phân để tính thể tích vật thể}
+
+\subsection*{a. Tính thể tích của vật thể}
+
+\paragraph{Công thức tính thể tích của vật thể.} 
+Cho một vật thể trong không gian $Oxyz$. Gọi $\mathcal{B}$ là phần vật thể giới hạn bởi hai mặt phẳng vuông góc với trục $Ox$ tại các điểm có hoành độ $x = a, x = b$. Một mặt phẳng vuông góc với trục $Ox$ tại điểm có hoành độ là $x$ cắt vật thể theo mặt cắt có diện tích là $S(x)$. Giả sử $S(x)$ là hàm số liên tục trên đoạn $[a; b]$. Khi đó thể tích $V$ của phần vật thể $\mathcal{B}$ được tính bởi công thức:
+\[V = \int_{a}^{b} S(x) \, \mathrm{d}x\]
+
+\paragraph{Ví dụ.} Tính thể tích của khối chóp đều có đáy là hình vuông cạnh $L$ và chiều cao là $h$.
+
+\noindent\textbf{Giải:} 
+Chọn trục $Ox$ sao cho gốc $O$ trùng với đỉnh của khối chóp và trục đi qua tâm của đáy. Khi đó, đáy của khối chóp nằm trên mặt phẳng vuông góc với $Ox$ tại $x = h$. 
+Mỗi mặt phẳng vuông góc với trục $Ox$ tại điểm có hoành độ bằng $x$ ($0 \le x \le h$), cắt khối chóp theo mặt cắt là hình vuông có cạnh là $a$. 
+Theo định lí Thales, ta có $\frac{x}{h} = \frac{a}{L}$, suy ra $a = \frac{L}{h}x$. 
+Do đó, diện tích của mặt cắt này là $S(x) = a^2 = \frac{L^2}{h^2}x^2$. 
+
+Vậy thể tích của khối chóp này là:
+\[V = \int_{0}^{h} S(x) \, \mathrm{d}x = \int_{0}^{h} \frac{L^2}{h^2}x^2 \, \mathrm{d}x = \left. \frac{L^2}{h^2} \frac{x^3}{3} \right|_{0}^{h} = \frac{1}{3}L^2h.\]
+
+\begin{center}
+\begin{tikzpicture}[scale=0.9, >=stealth]
+    % Trục tọa độ
+    \draw[->] (-0.5,0) -- (5,0) node[right] {$x$};
+    \draw[->] (0,-1.8) -- (0,2.2) node[above] {$y$};
+    \fill (0,0) circle (1.5pt) node[below left] {$O$};
+    
+    \def\h{4}
+    \def\px{2.2}
+    
+    % Tam giác cắt (màu xanh lá)
+    \draw[green!60!black, thick] (0,0) -- (\h, 1.5) node[above left] {$P$};
+    \draw[green!60!black, thick] (0,0) -- (\h, -1.5);
+    \draw[green!60!black, thick] (\h, 1.5) -- (\h, -1.5);
+    
+    % Đoạn thẳng mặt cắt a tại x (màu đỏ)
+    \draw[red, thick] (\px, 0.825) -- (\px, -0.825);
+    % Đặt chữ a thấp xuống sát trục Ox
+    \node[red, above right, inner sep=1pt] at (\px, 0) {$a$};
+    \fill[red] (\px, 0) circle (1.5pt);
+    
+    % Điểm L trên trục Ox và đặt chữ L sát trục Ox
+    \fill[red] (\h, 0) circle (1.5pt);
+    \node[red, above right, inner sep=1pt] at (\h, 0) {$L$};
+    
+    % Các đường gióng kích thước x và h ở phía dưới
+    \draw[gray, thin, <->] (0, -1.0) -- (\px, -1.0) node[midway, below] {$x$};
+    \draw[gray, thin, <->] (0, -1.5) -- (\h, -1.5) node[midway, below] {$h$};
+\end{tikzpicture}
+\end{center}
+
+\paragraph{Chú ý.} Bằng ứng dụng của tích phân, người ta chứng minh được thể tích của khối chóp bất kì bằng $\frac{1}{3}$ diện tích mặt đáy nhân với chiều cao của nó.
+
+\subsection*{b. Tính thể tích khối tròn xoay}
+
+\paragraph{Công thức tính thể tích khối tròn xoay.} 
+Cho hàm số $f(x)$ liên tục, không âm trên đoạn $[a; b]$. 
+Khi quay hình phẳng giới hạn bởi đồ thị hàm số $y = f(x)$, trục hoành và hai đường thẳng $x = a, x = b$ quanh trục hoành, ta được hình khối gọi là \textbf{khối tròn xoay}. 
+Khi cắt khối tròn xoay đó bởi một mặt phẳng vuông góc với trục $Ox$ tại điểm $x \in [a; b]$ được một hình tròn có bán kính $f(x)$. Thể tích của khối tròn xoay này là:
+\[V = \pi \int_{a}^{b} f^2(x) \, \mathrm{d}x\]
+
+\paragraph{Ví dụ.} Tính thể tích khối tròn xoay sinh ra khi quay quanh trục $Ox$ hình phẳng giới hạn bởi đồ thị hàm số $y = \sqrt{x}$, trục hoành và hai đường thẳng $x = 0, x = 1$.
+
+\noindent\textbf{Giải:} 
+Thể tích khối tròn xoay cần tính là:
+\[V = \pi \int_{0}^{1} f^2(x) \, \mathrm{d}x = \pi \int_{0}^{1} (\sqrt{x})^2 \, \mathrm{d}x = \pi \int_{0}^{1} x \, \mathrm{d}x = \left. \pi \frac{x^2}{2} \right|_{0}^{1} = \frac{\pi}{2}.\]
+
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        xmin=-0.5, xmax=1.5,
+        ymin=-1.2, ymax=1.5,
+        axis lines=middle,
+        xlabel=$x$, ylabel=$y$,
+        xtick={1},
+        ytick={},
+        samples=100,
+        width=8cm, height=6cm,
+    ]
+        \addplot[name path=f, blue, domain=0:1.2] {sqrt(x)};
+        \addplot[name path=axis, draw=none, domain=0:1.2] {0};
+        \addplot[orange!60] fill between[of=f and axis, domain=0:1];
+        \node[blue, font=\small] at (axis cs:0.7, 1.0) {$y = \sqrt{x}$};
+        \draw[dashed, thick] (axis cs:1,0) -- (axis cs:1,1);
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+
+\bigskip
+
+\section*{3. Ứng dụng tích phân để tính diện tích mặt tròn xoay}
+
+\hspace{1cm} Cho hình thang cong giới hạn bởi 
+$\begin{cases} 
+a \le x \le b \\ 
+y = 0 \\ 
+y = f(x) 
+\end{cases}$ 
+với $f \in C^1[a, b]$. Quay hình thang cong này quanh trục $Ox$ thì ta được một vật thể tròn xoay. Khi đó diện tích xung quanh của vật thể được tính theo công thức:
+
+\begin{equation}
+S = 2\pi \int_{a}^{b} |f(x)| \sqrt{1 + f'^2(x)} \, \mathrm{d}x
+\end{equation}
+
+\hspace{1cm} Tương tự nếu quay hình thang cong 
+$\begin{cases} 
+c \le y \le d \\ 
+x = 0 \\ 
+x = \varphi(y) 
+\end{cases}$ 
+với $\varphi \in C^1[c, d]$, quanh trục $Oy$ thì:
+
+\begin{equation}
+S = 2\pi \int_{c}^{d} |\varphi(y)| \sqrt{1 + \varphi'^2(y)} \, \mathrm{d}y
+\end{equation}
+
+\bigskip
+
+\noindent\textbf{Ví dụ.} Tính diện tích mặt tròn xoay tạo nên khi quay các đường sau:
+
+\noindent\textbf{a)} $y = \tan x, \, 0 < x \le \frac{\pi}{4}$ quanh trục $Ox$.
+
+\noindent\textbf{b)} $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ quanh trục $Oy \, (a > b)$.
+
+\noindent\textbf{c)} $9y^2 = x(3 - x)^2, \, 0 \le x \le 3$ quanh trục $Ox$.
+
+\bigskip
+
+\noindent\textbf{Lời giải:}
+
+\noindent\textbf{a)} Áp dụng công thức (1) ta có:
+\[S = 2\pi \int_{0}^{\frac{\pi}{4}} \tan x \sqrt{1 + (1 + \tan^2 x)} \, \mathrm{d}x\]
+\[= 2\pi \int_{0}^{1} t \sqrt{1 + (1 + t^2)^2} \cdot \frac{\mathrm{d}t}{1 + t^2} \quad (\text{đặt } t = \tan x)\]
+\[= \pi \int_{0}^{1} \frac{\sqrt{1 + (1 + t^2)^2}}{1 + t^2} \, \mathrm{d}(t^2 + 1)\]
+\[= \pi \int_{1}^{2} \frac{\sqrt{1 + s^2}}{s} \, \mathrm{d}s \quad (\text{đặt } s = 1 + t^2)\]
+\[= \pi \int_{\sqrt{2}}^{\sqrt{5}} \left(1 + \frac{1}{u^2 - 1}\right) \mathrm{d}u\]
+\[= \pi \left\{ \sqrt{5} - \sqrt{2} + \frac{1}{2} \left[ \ln \frac{\sqrt{5} - 1}{\sqrt{2} - 1} - \ln \frac{\sqrt{5} + 1}{\sqrt{2} + 1} \right] \right\}\]
+
+\bigskip
+
+\noindent\textbf{b)} Nhận xét tính đối xứng của miền và áp dụng công thức (2) ta có:
+\[S = 2 \cdot 2\pi \int_{0}^{b} \frac{a}{b} \sqrt{b^2 - y^2} \cdot \sqrt{1 + \left( \frac{a}{b} \frac{y}{\sqrt{b^2 - y^2}} \right)^2} \, \mathrm{d}y\]
+\[= 4\pi \frac{a}{b} \int_{0}^{b} \sqrt{b^4 + (a^2 - b^2)y^2} \, \mathrm{d}y\]
+\[= 4\pi \frac{a}{b} \sqrt{a^2 - b^2} \int_{0}^{b} \sqrt{y^2 + \frac{b^4}{a^2 - b^2}} \, \mathrm{d}y\]
+\[= 4\pi \frac{a}{b} \sqrt{a^2 - b^2} \int_{0}^{b} \sqrt{y^2 + \beta} \, \mathrm{d}y \quad \left( \text{đặt } \beta = \frac{b^4}{a^2 - b^2} \right)\]
+\[= 4\pi \frac{a}{b} \sqrt{a^2 - b^2} \cdot \frac{1}{2} \left[ y \sqrt{y^2 + \beta} + \beta \ln |y + \sqrt{y^2 + \beta}| \right] \Bigg|_{0}^{b}\]
+\[\left( \int \sqrt{y^2 + \beta} \, \mathrm{d}y = \frac{1}{2} \left[ y \sqrt{y^2 + \beta} + \beta \ln |y + \sqrt{y^2 + \beta}| \right] \right)\]
+
+\bigskip
+
+\noindent\textbf{c)} Trước hết:
+\[9y^2 = x(3 - x)^2 \implies 18yy' = 3(3 - x)(1 - x) \implies y' = \frac{(3 - x)(1 - x)}{6y} \implies y'^2 = \frac{(1 - x)^2}{4x}\]
+Nên áp dụng công thức (1) ta có:
+\[S = 2\pi \int_{0}^{3} \frac{\sqrt{x}(3 - x)}{3} \cdot \sqrt{1 + \frac{(1 - x)^2}{4x}} \, \mathrm{d}x = 2\pi \cdot \frac{1}{6} \int_{0}^{3} (3 - x)(1 + x) \, \mathrm{d}x = 3\pi\]
+
+\bigskip
+
+\section*{4. Ứng dụng tích phân tính độ dài đường cong phẳng}
+
+\noindent\textbf{a) Trường hợp đường cong $AB$ cho bởi phương trình $y = f(x)$:}
+\[AB \begin{cases} y = f(x) \\ a \le x \le b \\ f \in C^1[a, b] \end{cases} \quad \text{thì} \quad s = \int_{a}^{b} \sqrt{1 + [f'(x)]^2} \, \mathrm{d}x \tag{3}\]
+
+\bigskip
+
+\noindent\textbf{b) Trường hợp đường cong $AB$ cho bởi phương trình tham số:}
+\[AB \begin{cases} x = x(t) \\ y = y(t) \\ \alpha \le t \le \beta \\ x(t), y(t) \in C^1[a, b] \\ x'^2(t) + y'^2(t) > 0 \quad \forall t\in [\alpha, \beta] \end{cases} \quad \text{thì} \quad s = \int_{\alpha}^{\beta} \sqrt{[x'(t)]^2 + [y'(t)]^2} \, \mathrm{d}t \tag{4}\]
+\bigskip
+\noindent\textbf{c) Trường hợp đường cong $AB$ cho bởi phương trình trong toạ độ cực:}
+\[AB \begin{cases} r = r(\varphi) \\ \alpha \le \varphi \le \beta \\ 
+r(\varphi) \in C^1[\alpha, \beta] \end{cases} \quad \text{thì} \quad 
+s = \int_{\alpha}^{\beta} \sqrt{r^2(\varphi) + r'^2(\varphi)} \, \mathrm{d}\varphi \tag{5}\]
+\bigskip
+\noindent\textbf{Ví dụ.} Tính độ dài đường cong:
+
+\noindent\textbf{a)} $y = \ln \frac{e^x + 1}{e^x - 1}$ khi $x$ biến thiên từ $1$ đến $2$.
+
+\noindent\textbf{b)} 
+$\begin{cases} 
+x = a\left(\cos t + \ln \tan \frac{t}{2}\right) \\ 
+y = a \sin t 
+\end{cases}$ 
+khi $t$ biến thiên từ $\frac{\pi}{3}$ đến $\frac{\pi}{2}$.
+
+\bigskip
+
+\noindent\textbf{Lời giải:}
+
+\noindent\textbf{a)} Ta có:
+\[1 + y'^2(x) = 1 + \left( \frac{e^x}{e^x + 1} - \frac{e^x}{e^x - 1} \right)^2 = \left( \frac{e^{2x} + 1}{e^{2x} - 1} \right)^2\]
+Nên áp dụng công thức (3) ta được:
+\[s = \int_{1}^{2} \frac{e^{2x} + 1}{e^{2x} - 1} \, \mathrm{d}x \;\; \stackrel{(t = e^{2x})}{=} \int_{e^2}^{e^4} \frac{t + 1}{2t(t - 1)} \, \mathrm{d}t = \ln \frac{e^2 + 1}{e^2}\]
+
+\bigskip
+
+\noindent\textbf{b/} Áp dụng công thức (4) ta có:
+\[x'^2(t) + y'^2(t) = a^2 \cdot \frac{\cos^2 t}{\sin^2 t} \implies s = a \int_{\frac{\pi}{3}}^{\frac{\pi}{2}} \sqrt{\frac{\cos^2 t}{\sin^2 t}} \, \mathrm{d}t = a \ln \sqrt{\frac{2}{\sqrt{3}}}\]
+
+\bigskip
+
+\section*{5. Một số bài tập ứng dụng hình học của tích phân}
+
+\bigskip
+
+\noindent\textbf{Bài 1.} Các nhà kinh tế sử dụng đường cong Lorenz để minh hoạ sự phân phối thu nhập trong một quốc gia. Gọi $x$ là đại diện cho phần trăm số gia đình trong một quốc gia và $y$ là phần trăm tổng thu nhập. Đường $y = x$ sẽ đại diện cho một quốc gia mà các gia đình có thu nhập như nhau. Đường cong Lorenz $y = f(x)$ biểu thị phân phối thu nhập thực tế. Diện tích hình phẳng giới hạn bởi hai đường này, với $0 \le x \le 100$, biểu thị ``sự bất bình đẳng về thu nhập'' của một quốc gia. Năm $2005$, đường cong Lorenz của Hoa Kỳ có thể được mô hình hoá bởi hàm số
+\[y = \left(0{,}00061x^2 + 0{,}0218x + 1723\right)^2, \quad 0 \le x \le 100,\]
+trong đó $x$ được tính từ các gia đình nghèo nhất đến giàu có nhất (Theo \textit{R. Larson, Brief Calculus: An Applied Approach, 8th edition, Cengage Learning, 2009}).
+
+\noindent\textbf{Phương pháp giải:}
+
+\noindent Sử dụng kiến thức về diện tích hình phẳng giới hạn bởi hai đồ thị hàm số và đường thẳng $x=a$, $x=b$ để tính: Diện tích $S$ của hình phẳng giới hạn đồ thị của hai hàm số $f(x)$, $g(x)$ liên tục trên đoạn $[a,b]$ và hai đường thẳng $x=a$, $x=b$, được tính bởi công thức $S = \int_{a}^{b} |f(x) - g(x)| \, \mathrm{d}x$.
+
+\noindent\textbf{Lời giải:}
+
+\noindent Sự bất bình đẳng thu nhập của Hoa Kỳ vào năm 2005 là:
+\begin{align*}
+    &\int_{0}^{100} \left| \left(0{,}00061x^2 + 0{,}0218x + 1723\right)^2 - x \right| \mathrm{d}x \\
+    &= \int_{0}^{100} \left| 0{,}00061^2x^4 + 4{,}7524 \cdot 10^{-4} \cdot x^2 + 1723^2 \right. \\
+    &\quad \left. + 2{,}6596 \cdot 10^{-5}x^3 + 2{,}10206x^2 + 74{,}1228x \right| \mathrm{d}x \\
+    &= \int_{0}^{100} \left( 0{,}00061^2x^4 + 4{,}7524 \cdot 10^{-4} \cdot x^2 + 1723^2 \right. \\
+    &\quad \left. + 2{,}6596 \cdot 10^{-5}x^3 + 2{,}10206x^2 + 74{,}1228x \right) \mathrm{d}x \\
+    &= \left( 7{,}442 \cdot 10^{-8}x^5 + \frac{11881}{75} \cdot 10^{-6}x^3 + 1723^2x \right. \\
+    &\quad \left. + 6{,}649 \cdot 10^{-6}x^4 + \frac{105103}{150000}x^3 + 37{,}0614x^2 \right)\Bigg|_{0}^{100} \\
+    &= 7{,}442 \cdot 10^{-8} \cdot 100^5 + \frac{11881}{75} \cdot 10^{-6} \cdot 100^3 + 1723^2 \cdot 100 \\
+    &\quad + 6{,}649 \cdot 10^{-6} \cdot 100^4 + \frac{105103}{150000} \cdot 100^3 + 37{,}0614 \cdot 100^2 \\
+    &= 297945768{,}18.
+\end{align*}
+
+\bigskip
+
+\noindent\textbf{Bài 2.} Khối chỏm cầu có bán kính $R$ và chiều cao $h$ ($0 < h \le R$) sinh ra khi quay hình phẳng giới hạn bởi cung tròn có phương trình $y = \sqrt{R^2 - x^2}$, trục hoành và hai đường thẳng $x = R - h, x = R$ xung quanh trục $Ox$. Tính thể tích của khối chỏm cầu này.
+
+\begin{center}
+\begin{tikzpicture}[scale=1.1, >=stealth]
+    % ==================== HÌNH 1 (BÊN TRÁI) ====================
+    \begin{scope}[shift={(0,0)}]
+        % Trục tọa độ
+        \draw[->, thick] (0,0) -- (3.2,0) node[below, cyan] {$x$};
+        \draw[->, thick] (0,-2.2) -- (0,2.5) node[left, cyan] {$y$};
+        \draw[->, thick] (0,0) -- (-2.2,-1.5) node[above, cyan] {$z$};
+        \node[above left, cyan] at (0,0) {$O$};
+
+        % Miền tô vàng chỏm cầu
+        \fill[yellow!40] (1.2,0) -- (1.2,{sqrt(2.2^2 - 1.2^2)}) arc (57.02:0:2.2) -- cycle;
+
+        % Nửa đường tròn bán kính R
+        \draw[thick, red] (0,2.2) arc (90:-90:2.2);
+
+        % Mặt cắt elip tại x = R - h: nửa ngoài liền, nửa trong đứt
+        \draw[thick] (1.2,{sqrt(2.2^2 - 1.2^2)}) arc (90:-90:0.283 and {sqrt(2.2^2 - 1.2^2)});
+        \draw[thick, dashed] (1.2,{sqrt(2.2^2 - 1.2^2)}) arc (90:270:0.283 and {sqrt(2.2^2 - 1.2^2)});
+
+        % Các đoạn thẳng chú thích R-h và h trên trục Ox
+        \draw[thick, green!60!black] (0,0) -- (1.2,0);
+        \draw[thick, orange] (1.2,0) -- (2.2,0);
+        \node[above, orange] at (1.7,0) {$h$};
+        \node[below, cyan] at (2.2,0) {$R$};
+        
+        % Chú thích R - h bằng mũi tên 
+        \node[green!60!black] (rh) at (0.3,-1.2) {$R-h$};
+        \draw[->, gray, thick] (rh) |- (0.6,-0.05);
+
+        % Điểm đỏ trên trục
+        \fill[red] (1.2,0) circle (1.5pt);
+
+        % Nhãn hàm số y = sqrt(R^2 - x^2)
+        \node[red, right] at (1.8, 1.9) {$y = \sqrt{R^2 - x^2}$};
+    \end{scope}
+
+    % ==================== HÌNH 2 (BÊN PHẢI) ====================
+    \begin{scope}[shift={(6,0)}]
+        % Khối cầu bên ngoài
+        \draw[thick, red] (0,0) circle (2);
+
+        % Đường xích đạo
+        \draw[thick] (-2,0) arc (180:360:2 and 0.5);
+        \draw[thick, dashed] (2,0) arc (0:180:2 and 0.5);
+
+        % Mặt cắt chỏm cầu màu xanh
+        \fill[cyan!60] (0,1.2) ellipse ({sqrt(2^2 - 1.2^2)} and 0.35);
+        \fill[cyan!60] ({-sqrt(2^2 - 1.2^2)},1.2) arc (143.13:36.87:2) -- cycle;
+        \draw[thick] ({-sqrt(2^2 - 1.2^2)},1.2) arc (180:360:{sqrt(2^2 - 1.2^2)} and 0.35);
+        \draw[thick, dashed] ({sqrt(2^2 - 1.2^2)},1.2) arc (0:180:{sqrt(2^2 - 1.2^2)} and 0.35);
+
+        % Các điểm tâm
+        \fill[red] (0,0) circle (1.8pt);
+        \fill[red] (0,1.2) circle (1.8pt);
+
+        % Bán kính R
+        \draw[cyan, dashed, thick] (0,0) -- (2,0);
+        \node[cyan, above] at (1,0) {$R$};
+
+        % Đo chiều cao h
+        \draw[dashed, gray] (0,2) -- (2.1,2);
+        \draw[dashed, gray] ({sqrt(2^2 - 1.2^2)},1.2) -- (2.1,1.2);
+        \draw[<->, >=stealth, thick, gray] (1.9,1.2) -- (1.9,2);
+        \node[orange, right] at (1.9,1.6) {$h$};
+    \end{scope}
+\end{tikzpicture}
+\end{center}
+
+\noindent\textbf{Phương pháp giải:}
+\noindent Sử dụng kiến thức về công thức tính thể tích của khối tròn xoay để tính: Cho hàm số $f(x)$ liên tục, không âm trên đoạn $[a; b]$. Khi quay hình phẳng giới hạn bởi đồ thị hàm số $y=f(x)$, trục hoành và hai đường thẳng $x=a$,$x=b$ xung quanh trục hoành, ta được hình khối gọi là một khối tròn xoay. Khi cắt khối tròn xoay đó bởi một mặt phẳng vuông góc với trục $Ox$ tại điểm $x∈[a;b]$ được một hình tròn có bán kính $f(x)$. Thể tích của khối tròn xoay này là: 
+$V=\pi \int_{a}^{b} f^2(x) \mathrm{d}x \\$.
+
+\noindent\textbf{Lời giải:}
+
+\noindent Thể tích khối chỏm cầu là:
+\begin{align*}
+    V &= \pi \int_{R-h}^{R} \left(R^2 - x^2\right) \mathrm{d}x \\
+    &= \pi \left( R^2x - \frac{x^3}{3} \right)\Bigg|_{R-h}^{R} \\
+    &= \pi \left[ R^3 - \frac{R^3}{3} - R^2(R-h) + \frac{(R-h)^3}{3} \right] \\
+    &= \pi h^2 \left( R - \frac{h}{3} \right).
+\end{align*}
+
+\bigskip
+
+\noindent\textbf{Bài 3.} Cho tam giác vuông $OAB$ có cạnh $OA = a$ nằm trên trục $Ox$ và $\widehat{AOB} = \alpha$ $\left(0 < \alpha \le \dfrac{\pi}{4}\right)$. Gọi $\mathcal{B}$ là khối tròn xoay sinh ra khi quay miền tam giác $OAB$ xung quanh trục $Ox$.
+\begin{enumerate}
+    \item[a)] Tính thể tích $V$ của $\mathcal{B}$ theo $a$ và $\alpha$.
+    \item[b)] Tìm $\alpha$ sao cho thể tích $V$ lớn nhất.
+\end{enumerate}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.2, >=stealth]
+    % Hệ trục tọa độ 3 chiều Oxyz
+    \draw[->, thick] (-1, 0) -- (5, 0) node[below] {$x$};
+    \draw[->, thick] (0, -2.2) -- (0, 2.2) node[left] {$y$};
+    \draw[->, thick] (0, 0) -- (-1.5, -1.5) node[below left] {$z$};
+
+    % Các tọa độ điểm
+    \coordinate (O) at (0, 0);
+    \coordinate (A) at (3.5, 0);
+    \coordinate (B) at (3.5, 1.4);
+
+    % Chỉ tô màu vàng đúng phần tam giác OAB ở nửa trên
+    \fill[yellow!35] (O) -- (B) -- (A) -- cycle;
+
+    % Vẽ các đường sinh và đường cao
+    \draw[dashed, thick] (O) -- (A); 
+    \draw[thick] (O) -- (B);       
+    \draw[thick] (O) -- (3.5, -1.4); 
+    \draw[thick] (A) -- (B);       
+
+    % Đáy hình nón (vẽ hình elip)
+    \draw[thick] (3.5, 0) ellipse (0.25cm and 1.4cm);
+
+    % Góc alpha (thu ngắn bán kính lại để không bị nhô ra ngoài)
+    \draw (0.9, 0) arc (0:21.8:0.9cm);
+    \node at (1.1, 0.22) {$\alpha$};
+
+    % Tên các điểm O, A, B viết rõ ràng
+    \node[fill=white, inner sep=1pt] at (O) [above left] {$O$};
+    \node[fill=white, inner sep=1pt] at (A) [below right, yshift=-1pt] {$A$};
+    \node[fill=white, inner sep=1pt] at (B) [above] {$B$};
+\end{tikzpicture}
+\end{center}
+
+\noindent\textbf{Phương pháp giải:}
+\noindent Sử dụng kiến thức về công thức tính thể tích của khối tròn xoay để tính: Cho hàm số $f(x)$ liên tục, không âm trên đoạn $[a; b]$. Khi quay hình phẳng giới hạn bởi đồ thị hàm số $y=f(x)$, trục hoành và hai đường thẳng $x=a$,$x=b$ xung quanh trục hoành, ta được hình khối gọi là một khối tròn xoay. Khi cắt khối tròn xoay đó bởi một mặt phẳng vuông góc với trục $Ox$ tại điểm $x∈[a;b]$ được một hình tròn có bán kính $f(x)$. Thể tích của khối tròn xoay này là: 
+$V=\pi \int_{a}^{b} f^2(x) \mathrm{d}x \\$.
+
+\noindent\textbf{Lời giải:}
+
+\noindent a) Ta có: $AB = a \tan\alpha$. Khi quay tam giác $AOB$ quanh trục $Ox$ ta được khối nón tròn xoay có bán kính đáy $r = AB = a \tan\alpha$ và chiều cao $h = OA = a$.
+
+\noindent Thể tích khối nón là:
+\[V = \frac{1}{3}\pi r^2 h = \frac{1}{3}\pi \cdot a \cdot a^2\tan^2\alpha = \frac{1}{3}\pi a^3\tan^2\alpha.\]
+
+\noindent b) Theo a ta có: $V = \frac{1}{3}\pi a^3 \tan^2\alpha$.
+
+\noindent Ta có: $V' = \frac{2}{3}\pi a^3 \tan\alpha \cdot \frac{1}{\cos^2\alpha}$. Với $0 < \alpha \le \dfrac{\pi}{4} \Rightarrow 0 < \tan\alpha < 1$. Do đó, $V' > 0$ nên hàm số $V$ đồng biến trên $\left(0; \dfrac{\pi}{4}\right)$.
+
+\noindent Do đó, $\max\limits_{\left(0;\frac{\pi}{4}\right]} V = V\left(\frac{\pi}{4}\right) = \frac{1}{3}\pi a^3 \tan^2\frac{\pi}{4} = \frac{1}{3}\pi a^3$.
+
+\noindent Vậy giá trị lớn nhất của $V$ là $\dfrac{1}{3}\pi a^3$ khi $\alpha = \dfrac{\pi}{4}$.
+
+\bigskip
+
+\noindent\textbf{Bài 4.} Kiến trúc sư thiết kế một khu sinh hoạt cộng đồng có dạng hình chữ nhật với chiều rộng và chiều dài lần lượt là $60\,\text{m}$ và $80\,\text{m}$. Trong đó, phần được tô màu đậm là sân chơi, phần còn lại để trồng hoa. Mỗi phần trồng hoa có đường biên cong là một phần của parabol với đỉnh thuộc một trục đối xứng của hình chữ nhật và khoảng cách từ đỉnh đó đến trung điểm cạnh tương ứng của hình chữ nhật bằng $20\,\text{m}$ (xem hình minh họa). Diện tích của phần sân chơi là bao nhiêu mét vuông?
+
+\begin{center}
+\begin{tikzpicture}
+    \begin{axis}[
+        xmin=-10, xmax=70,
+        ymin=-5, ymax=85,
+        axis lines=none,
+        samples=100,
+        width=6.5cm, height=8cm, % Đã thu nhỏ kích thước lại cho gọn
+    ]
+        % --- TÔ MÀU PHẦN THÂN CHÍNH Ở GIỮA, ĐỂ TRẮNG 2 ĐẦU PARABOL ---
+        \addplot[fill=brown!15, draw=none, domain=0:60] {60 + 0.02222*(x-30)^2} \closedcycle;
+        \addplot[fill=white, draw=none, domain=0:60] {20 - 0.02222*(x-30)^2} \closedcycle;
+
+        % --- VẼ VIỀN HÌNH CHỮ NHẬT VÀ ĐƯỜNG CONG PARABOL ---
+        \addplot[thick, black] coordinates {(0,0) (60,0) (60,80) (0,80) (0,0)};
+
+        % Đường cong parabol trên và dưới màu cam
+        \addplot[thick, orange!80!black, domain=0:60] {60 + 0.02222*(x-30)^2};
+        \addplot[thick, orange!80!black, domain=0:60] {20 - 0.02222*(x-30)^2};
+
+        % --- CÁC MŨI TÊN ĐO KHOẢNG CÁCH 20 M KHÍT ---
+        \draw[<->, >=stealth, thick] (axis cs:30, 80) -- (axis cs:30, 60);
+        \node[fill=white, inner sep=1pt] at (axis cs:30, 70) {\small $20\text{ m}$};
+
+        \draw[<->, >=stealth, thick] (axis cs:30, 20) -- (axis cs:30, 0);
+        \node[fill=white, inner sep=1pt] at (axis cs:30, 10) {\small $20\text{ m}$};
+
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+
+\noindent\textbf{Phương pháp giải:}
+
+\noindent Để giải quyết bài toán này, các lý thuyết chính được sử dụng bao gồm:
+
+\noindent 1. Phương pháp tọa độ: Sử dụng hệ trục tọa độ để biểu diễn các hình dạng hình học như hình chữ nhật, đường thẳng và parabol bằng các phương trình đại số.
+
+\noindent 2. Phương trình parabol: Parabol có phương trình dạng $y=ax^2+bx+c (a≠0)$. Qua các điểm thuộc đồ thị, ta lập và giải hệ phương trình để tìm các hệ số $a, b, c$.
+
+\noindent 3. Ứng dụng tích phân để tính diện tích hình phẳng: Diện tích của hình phẳng giới hạn bởi đồ thị của hai hàm số $y = f(x)$ và $y = g(x)$ liên tục trên đoạn $[a;b]$ và hai đường thẳng đứng $x = a, x = b$ được tính bằng công thức $S = \int_{a}^{b} |f(x) - g(x)| \, \mathrm{d}x$.
+
+\noindent\textbf{Lời giải:}
+
+\noindent Đặt hệ trục tọa độ $Oxy$ như hình vẽ.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.9, >=stealth]
+    % Sử dụng pgfplots để vẽ hệ trục chuẩn xác
+    \begin{axis}[
+        xmin=-10, xmax=75,
+        ymin=-10, ymax=95,
+        axis lines=middle,
+        xlabel=$x$, ylabel=$y$,
+        xtick={30,60},
+        xticklabels={$30$, $60$},
+        ytick={20,80},
+        yticklabels={$20$, $80$},
+        samples=100,
+        width=8cm, height=9cm,
+    ]
+        % Hình chữ nhật tổng thể (chiều rộng 60, chiều cao 80)
+        \addplot[thick, black] coordinates {(0,0) (60,0) (60,80) (0,80) (0,0)};
+        
+        % Tô màu phần sân chơi ở giữa (giới hạn bởi 2 parabol)
+        \addplot[fill=brown!15, draw=none, domain=0:60] {80 - (-1/45*x^2 + 4/3*x)} \closedcycle;
+        \addplot[fill=white, domain=0:60] {-1/45*x^2 + 4/3*x} \closedcycle;
+
+        % Parabola phía dưới và phía trên
+        \addplot[thick, orange!80!black, domain=0:60] {-1/45*x^2 + 4/3*x};
+        \addplot[thick, orange!80!black, domain=0:60] {80 - (-1/45*x^2 + 4/3*x)};
+
+        % Đường gióng nét đứt từ điểm I(30; 20) sang trục tung
+        \draw[dashed, thick] (axis cs:0,20) -- (axis cs:30,20);
+        
+        % Các điểm đặc biệt O, I, A
+        \fill[red] (axis cs:0,0) circle (1.5pt) node[below left] {$O$};
+        \fill[red] (axis cs:30,20) circle (1.5pt) node[above] {$I$};
+        \fill[red] (axis cs:60,0) circle (1.5pt) node[above right] {$A$};
+        
+        % Mũi tên kích thước 20m phía dưới (từ trục x = 0 đến đỉnh parabol y = 20)
+        \draw[<->, thick, gray!60!black] (axis cs:30, 0) -- (axis cs:30, 20);
+        \node[fill=white, inner sep=1pt] at (axis cs:30, 10) {\small $20\text{ m}$};
+
+        % Mũi tên kích thước 20m phía trên (từ đỉnh parabol y = 60 đến mép trên hình chữ nhật y = 80)
+        \draw[<->, thick, gray!60!black] (axis cs:30, 60) -- (axis cs:30, 80);
+        \node[fill=white, inner sep=1pt] at (axis cs:30, 70) {\small $20\text{ m}$};
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+
+Nhận thấy hai phần trồng hoa dạng đường parabol có diện tích như nhau. Vậy ta xét đường parabol ở bồn hoa phía dưới có dạng $(P): y = ax^2 + bx + c$ với $a \neq 0$.
+
+Ta có đồ thị $(P)$ đi qua ba điểm là $O(0; 0)$, $I(30; 20)$ và $A(60; 0)$. Thay vào ta thu được hệ phương trình:
+\[\begin{cases}c = 0 \\900a + 30b + c = 20 \\3600a + 60b + c = 0\end{cases}\iff\begin{cases}a = -\dfrac{1}{45} \\[6pt]b = \dfrac{4}{3} \\[6pt]c = 0\end{cases}\]
+
+Như vậy, ta có phương trình parabol đó là $y = -\dfrac{1}{45}x^2 + \dfrac{4}{3}x$ và diện tích của phần trồng hoa phía dưới là:
+\[S_{\text{hoa}} = \int_{0}^{60} \left| -\frac{1}{45}x^2 + \frac{4}{3}x \right| \mathrm{d}x = \int_{0}^{60} \left(-\frac{1}{45}x^2 + \frac{4}{3}x\right) \mathrm{d}x = 800 \, (\text{m}^2).\]
+
+Khi đó, diện tích của phần sân chơi là:
+\[S = 60 \cdot 80 - 2S_{\text{hoa}} = 4800 - 2 \cdot 800 = 3200 \, (\text{m}^2).\]
+
+\bigskip
+
+\noindent\textbf{Bài 5.} Từ hình chữ nhật $ABCD$ có chiều dài $AB = 8\text{ cm}$ và chiều rộng $BC = 4\text{ cm}$, người ta cắt bỏ miền $(R)$ được giới hạn bởi cạnh $CD$ của hình chữ nhật và hai nửa đường thẳng parabol có chung đỉnh là trung điểm cạnh $AB$, chúng lần lượt đi qua hai đầu mút $C, D$ của hình chữ nhật đó (phần tô đậm như hình vẽ). Phần còn lại cho quay quanh trục $AB$ để tạo nên một đồ vật làm trang trí, thể tích của vật trang trí đó bằng bao nhiêu $\text{cm}^3$. Viết kết quả làm tròn đến hàng đơn vị.
+
+\begin{center}
+\begin{tikzpicture}[scale=1.5, line width=0.8pt]
+    % Định nghĩa các điểm
+    \coordinate (A) at (0, 0);
+    \coordinate (B) at (4, 0);
+    \coordinate (O) at (2, 0);
+    \coordinate (C) at (4, 2);
+    \coordinate (D) at (0, 2);
+
+    % 1. Tô màu vùng xanh
+    % Đi từ D (0,2) sang C (4,2), vòng theo cung CO về O (tâm B(4,0)), rồi vòng theo cung OD về D (tâm A(0,0))
+    \fill[cyan!30] (D) -- (C) arc (90:180:2) arc (0:90:2) -- cycle;
+
+    % 2. Vẽ hình chữ nhật ABCD
+    \draw (A) -- (B) -- (C) -- (D) -- cycle;
+
+    % 3. Vẽ 2 cung tròn (DO tâm A, CO tâm B)
+    \draw (2,0) arc (0:90:2);    % Cung OD (tâm A)
+    \draw (2,0) arc (180:90:2);  % Cung OC (tâm B)
+
+    % 4. Nhãn các đỉnh
+    \node[below left] at (A) {$A$};
+    \node[below right] at (B) {$B$};
+    \node[below] at (O) {$O$};
+    \node[above right] at (C) {$C$};
+    \node[above left] at (D) {$D$};
+\end{tikzpicture}
+\end{center}
+
+\noindent\textbf{Lời giải}
+
+\noindent Phương trình Parabol $OC$ có dạng: $y^2 = ax$
+
+\noindent Mặt khác Parabol đi qua điểm $C(4; 4) \Rightarrow 4^2 = 4a \Rightarrow a = 4$
+
+\noindent Khi đó phương trình đường cong $OC$ là $y = \sqrt{4x}$.
+
+\noindent Thể tích của vật thể thu được là: 
+$$V = 2\left(\pi \int_{0}^{4} (\sqrt{4x})^2 \,\mathrm{d}x\right) = 64\pi \approx 201\,(\text{cm}^3)$$.
+
+\bigskip
+
+\noindent \textbf{Bài 6:} Cho hình vuông $OABC$ có cạnh bằng $4$, được chia thành hai phần bởi đường parabol $(P)$ có đỉnh tại gốc tọa độ $O$. Gọi $S$ là phần hình phẳng không bị gạch sọc (như hình vẽ). Hãy tính thể tích $V$ của khối tròn xoay khi cho phần hình phẳng $S$ quay quanh trục hoành $Ox$.
+
+\noindent \textbf{Phương pháp giải:}
+\begin{itemize}
+    \item Thiết lập phương trình chính tắc của parabol $(P)$ đi qua các mốc tọa độ đã cho.
+    \item Sử dụng công thức tính thể tích khối tròn xoay tổng quát khi quay hình phẳng giới hạn bởi hai đường cong $y = f(x)$, $y = g(x)$ và hai đường thẳng $x = a$, $x = b$ quanh trục $Ox$:
+    $$V = \pi \int_{a}^{b} \left|f^2(x) - g^2(x)\right|\,\mathrm{d}x$$
+\end{itemize}
+
+\noindent \textbf{Giải:}
+
+\noindent Chọn hệ trục tọa độ sao cho điểm $O(0;0)$, điểm $C(4;0)$ nằm trên trục $Ox$, điểm $A(0;4)$ nằm trên trục $Oy$, và đỉnh $B$ có tọa độ $(4;4)$.
+\noindent Parabol $(P)$ có dạng $y = ax^2$ đi qua điểm $B(4;4)$, ta suy ra:
+    $$4 = a \cdot 4^2 \iff a = \frac{1}{4} \implies (P): y = \frac{1}{4}x^2$$
+\noindent Miền $S$ (phần không bị gạch) được giới hạn bởi đường thẳng $y = 4$, đồ thị hàm số $y = \frac{1}{4}x^2$ và hai đường thẳng $x = 0$, $x = 4$.
+\noindent Khi cho phần $S$ quay quanh trục $Ox$, thể tích khối tròn xoay tạo thành được tính bằng công thức:
+ \begin{align*}
+        V &= \pi \int_{0}^{4} \left[4^2 - \left(\frac{1}{4}x^2\right)^2\right]\,\mathrm{d}x = \pi \int_{0}^{4} \left(16 - \frac{1}{16}x^4\right)\,\mathrm{d}x \\
+        &= \pi \left(16x - \frac{x^5}{80}\right)\Big|_0^4 = \pi \left(16 \cdot 4 - \frac{4^5}{80}\right) = \pi \left(64 - \frac{1024}{80}\right) = \frac{256\pi}{5}.
+    \end{align*}
+\end{itemize}
+
+\noindent Vậy thể tích cần tìm là $V = \dfrac{256\pi}{5}$.
+
+\begin{center}
+\begin{tikzpicture}[scale=1.2, >=Stealth]
+    % Trục tọa độ
+    \draw[->] (-1, 0) -- (5, 0) node[right] {$x$};
+    \draw[->] (0, -0.8) -- (0, 4.8) node[above] {$y$};
+    
+    % Gốc tọa độ O
+    \node[below right, blue] at (0,0) {$0$};
+    
+    % Đồ thị Parabol (P): y = (1/4)*x^2
+    \draw[thick, blue, domain=-1:4.3, samples=100] plot (\x, {0.25*\x*\x});
+    \node[right, blue] at (4.3, 3.8) {$(P)$};
+    
+    % Các đường gióng đứt nét
+    \draw[dashed, gray] (0, 4) -- (4, 4);
+    \draw[dashed, blue, thick] (4, 0) -- (4, 4);
+    
+    % Các điểm A, B, C
+    \fill[blue] (0, 4) circle (1.5pt) node[above right] {$A$};
+    \fill[blue] (4, 4) circle (1.5pt) node[above] {$B$};
+    \fill[blue] (4, 0) circle (1.5pt);
+    
+    % Nhãn trên trục (Số 4 trên Uy và Ox, Điểm C trên Ox)
+    \node[left, blue] at (0, 4) {$4$};
+    \node[above left, blue] at (4, 0) {$C$}; % Điểm C hiển thị rõ phía trên trục Ox
+    \node[below, blue] at (4, 0) {$4$};      % Số 4 nằm phía dưới trục Ox
+\end{tikzpicture}
+\end{center}
+
+\bigskip
+
+\noindent\textbf{Bài 7.} Cho hình phẳng $D$ giới hạn bởi các đường $y = e^x$, $y = 1$, $x = 2$. Tính thể tích khối tròn xoay tạo thành khi cho $D$ quay quanh trục $Ox$.
+
+\noindent \textbf{Phương pháp giải:}
+\noindent Xét phương trình hoành độ giao điểm của các đồ thị hàm số
+\noindent Thể tích khối tròn xoay giới hạn bởi đồ thị hàm số $y = f(x)$, $y = g(x)$, đường thẳng $x = a$, $x = b$ khi quay quanh trục hoành là:
+$$V = \pi \int_{a}^{b} \left|f^2(x) - g^2(x)\right|\,\mathrm{d}x$$
+
+\noindent \textbf{Lời giải:}
+
+\noindent Xét phương trình hoành độ giao điểm: $e^x = 1 \iff x = 0$
+\noindent Hình phẳng $D$ giới hạn bởi các đường $y = e^x$, $y = 1$, $x = 0$, $x = 2$ có thể tích bằng:
+    \begin{align*}
+        V &= \pi \int_{0}^{2} \left|(e^x)^2 - 1^2\right|\,\mathrm{d}x = \pi \int_{0}^{2} \left(e^{2x} - 1\right)\,\mathrm{d}x \\
+        &= \pi \left( \frac{1}{2}e^{2x} - x \right)\Big|_0^2 = \pi \left( \frac{1}{2}e^{4} - 2 - \left(\frac{1}{2}e^{0} - 0\right) \right) \\
+        &= \pi \left( \frac{1}{2}e^4 - 2 - \frac{1}{2} \right) = \pi \left(\frac{1}{2}e^4 - \frac{5}{2}\right)
+    \end{align*}
+
+\noindent \textbf Vậy thể tích khối tròn xoay cần tìm là $V = \pi \left(\dfrac{1}{2}e^4 - \dfrac{5}{2}\right)$.
+
+\newpage
+
+\begin{center}
+    {\LARGE \textbf{KẾT LUẬN}}
+\end{center}
+
+\vspace{1cm}
+
+\hspace{1cm}\noindent Trải qua quá trình lên kế hoạch, hệ thống hóa và triển khai, dự án \textbf{``Ứng dụng hình học của tích phân''} đã hoàn thành các mục tiêu đề ra ban đầu. Cụ thể, dự án đã đạt được các kết quả trọng tâm sau:
+
+\vspace{0.2cm}
+
+\begin{itemize}
+    \item \textbf{Hệ thống lý thuyết:} Xây dựng thành công hệ thống kiến thức nền tảng từ khái niệm, tính chất, công thức, phương pháp tính tích phân cho đến các công thức ứng dụng hình học (tính diện tích hình phẳng, thể tích khối tròn xoay, diện tích mặt tròn xoay và độ dài đường cong phẳng).
+    \item \textbf{Nâng cao tính trực quan qua công nghệ:} Tích hợp thành công hệ thống hình vẽ, đồ thị hình học không gian và phẳng có độ chính xác cao được lập trình trực tiếp bằng công cụ \texttt{TikZ/pgfplots}, giúp người học dễ dàng trực quan hóa bản chất toán học của vấn đề.
+    \item \textbf{Gắn kết lý thuyết với thực tiễn:} Đưa ra một số bài toán cùng với phương pháp giải và lời giải chi tiết.
+  
+\end{itemize}
+
+\hspace{1cm}\noindent Dù đã nỗ lực hoàn thiện với chất lượng tốt nhất, song do giới hạn về thời gian và phạm vi nghiên cứu, dự án khó tránh khỏi những thiếu sót nhất định. Tôi rất mong nhận được những ý kiến đóng góp quý báu từ TS. Nguyễn Đăng Minh Phúc và các bạn đọc để tài liệu ngày càng được hoàn thiện hơn.
+
+\end{document}
