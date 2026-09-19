@@ -1,4 +1,4 @@
-# DU-AN-UNG-DUNG-HINH-H-C-CUA-TICH-PHAN
+# UNG-DUNG-HINH-HOC-CUA-TICH-PHAN
 
 Dự án **Ứng dụng hình học của tích phân**, được biên soạn và trình bày chuyên nghiệp bằng LaTeX/Typst.  
 Mục tiêu của dự án là xây dựng một tài liệu có cấu trúc rõ ràng, trực quan, có các hình vẽ minh họa chi tiết và dễ dàng biên dịch thành tài liệu PDF chất lượng cao phục vụ cho học tập và giảng dạy.
